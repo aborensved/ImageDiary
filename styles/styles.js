@@ -12,7 +12,15 @@ export default styles = StyleSheet.create({
     // Home Styling
     hometop: {
         backgroundColor: "salmon",
-        width: (Dimensions.get('screen').width * 0.85) 
+        width: (Dimensions.get('screen').width * 0.85),
+        height: (Dimensions.get('screen').height * 0.2),
+        marginBottom: 15,  
+    },
+    homelatestpost: {
+        width: (Dimensions.get('screen').width * 0.85),
+        height: (Dimensions.get('screen').height * 0.4),
+        backgroundColor: '#99de99',
+        marginBottom: 15,  
     },
 
 
