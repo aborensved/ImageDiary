@@ -2,16 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import { Pressable, Text, View } from 'react-native';
 import styles from '../styles/styles';
 import { AntDesign } from '@expo/vector-icons'
+import CreatePostButton from '../components/Createpostbutton';
 
 const HomeScreen = () => {
 
-    const CreatePostButton = ({title, icon}) => {
-        return (<Pressable style={styles.createbutton}>
-            <Text>{title}</Text>
-                {icon}                 
-            </Pressable>
-        )
-    }
+
 
     return (
         <View style={styles.container}>
