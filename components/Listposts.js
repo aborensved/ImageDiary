@@ -18,16 +18,15 @@ const Listposts = () => {
         }
     ]
 
-    const DATA2 = ["Hej", "Hej igen", "Jag är här"]
+    const DATA2 = ["Hej", "Hej igen", "Jag är här", 'Tjohej']
 
     const renderPosts = ({ item : post }) => {        
         return (
-            <SafeAreaView style={styles.listpostitem}>
-            <Text style={styles.listposttitle}>TITEL: {post}</Text>
-            <Text style={styles.listposttext}>HELLO AGAIN!</Text>
-            </SafeAreaView>
-        )
-        console.log(post);  
+            <View  style={styles.listpostitem}>
+                <Text style={styles.listposttitle}>TITEL: {post}</Text>
+                <Text style={styles.listposttext}>HELLO AGAIN!</Text>
+            </View>
+        )        
     }
 
     return (
@@ -35,7 +34,7 @@ const Listposts = () => {
             <FlatList 
             data={DATA2}
             renderItem={renderPosts}
-            keyExtractor={post => post}
+            keyExtractor={post => post}            
             />
         </View>
     )

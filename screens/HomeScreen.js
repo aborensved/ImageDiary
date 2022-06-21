@@ -5,14 +5,14 @@ import styles from '../styles/styles';
 const HomeScreen = () => {
     return (
         <View style={styles.container}>
-            <View>
+            <View style={styles.hometop}>
                 <Text>Välkommen till Dagboken</Text>
             </View>
-            <View>
+            <View style={styles.listpostitem}>
                 <Text>SENASTE INLÄGGET</Text>
             </View>
             <View>
-                <Pressable>
+                <Pressable style={styles.createbutton}>
                     <Text>ADD NEW POST</Text>
                 </Pressable>
             </View>            

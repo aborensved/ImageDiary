@@ -1,34 +1,75 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 export default styles = StyleSheet.create({
     container: {
-      flex: 1,
-      
-      backgroundColor: '#aaa',
+      flex: 1,      
+      backgroundColor: '#aba',
       alignItems: 'center',
-      justifyContent: 'center',
+      padding: 15,    
+      
     },
-    listpostcontainer: {
-        flex: 1,
-        padding: 15,
-        backgroundColor: "red",
-        
-        borderRadius: 15
+
+    // Home Styling
+    hometop: {
+        backgroundColor: "salmon",
+        width: (Dimensions.get('screen').width * 0.85) 
     },
+
+
+    // List posts Styling
     listpostitem: {
-        flex: 1,   
-        padding: 20,     
-        backgroundColor: "blue",
-        height: "30%"
+        padding: 15,     
+        backgroundColor: "#99de99",
+        marginBottom: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 15,
+        width: (Dimensions.get('screen').width * 0.85)        
     },
     listposttitle: {
         color: "white",
-        fontSize: 32,
-        
+        fontSize: 25,
     },
     listposttext: {
-        color: "white",
-        fontSize: 25,
-        
+        color: "grey",
+        fontSize: 15,        
     },
+
+    // Create post Styling
+    createaddimage: {
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "lightblue",
+        borderRadius: 15,
+        width: (Dimensions.get('screen').width * 0.70),
+        height: (Dimensions.get('screen').height * 0.3),
+        marginBottom: 25
+    },
+    createinputtitle: {
+        backgroundColor: "white",
+        borderRadius: 15,
+        width: (Dimensions.get('screen').width * 0.80),
+        height: 50,
+        marginBottom: 15,
+        padding: 10,
+        fontSize: 20
+    },
+    createinputbody: {
+        backgroundColor: "white",
+        borderRadius: 15,
+        width: (Dimensions.get('screen').width * 0.80),
+        height: 200,
+        marginBottom: 15,
+        padding: 10,
+        fontSize: 16,
+    },
+    createbutton: {
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "lightblue",
+        borderRadius: 15,
+        width: (Dimensions.get('screen').width * 0.50),
+        height: 50 
+    },
+    
   });
