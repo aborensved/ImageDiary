@@ -3,6 +3,7 @@ import { Text, View, TextInput, Pressable } from 'react-native';
 import styles from '../styles/styles';
 
 const CreatepostScreen = () => {
+    
     return (
         <View style={styles.container}>
             <Pressable style={styles.createaddimage}>
