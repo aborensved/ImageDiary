@@ -7,3 +7,5 @@ npm install @react-navigation/native-stack
 npm install --save @types/react-native
 
 npm install @react-navigation/bottom-tabs
+
+expo install expo-sqlite
