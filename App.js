@@ -6,10 +6,22 @@ import HomeScreen from './screens/HomeScreen';
 import ListpostsScreen from './screens/ListpostsScreen';
 import CreatepostScreen from './screens/CreatepostScreen';
 import { AntDesign } from '@expo/vector-icons'
+import { useEffect } from 'react';
+import { getDiariesInfo, initDB } from './database/db';
 
 const Tabs = createBottomTabNavigator();
 
 export default function App() {
+  useEffect(() => {
+    initDB()
+      .then(res => {
+        console.log("database result: ", res)
+        return getDiariesInfo()
+      })
+      .then(res => console.log("getDiariesInfo result: ", res))
+      .catch(err => console.log(err))
+  }, [])
+
   return (
     <NavigationContainer>
       <Tabs.Navigator>

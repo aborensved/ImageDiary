@@ -1,4 +1,5 @@
 import * as SQLite from 'expo-sqlite';
+import ImgDiary from '../models/ImgDiary';
 
 
 const db = SQLite.openDatabase('imgDiary.db');
@@ -34,12 +35,12 @@ export const getDiariesInfo = () => {
   })
 }
 
-export const insert = (imgDiary) => {
+export const insert = (imgdiary) => {
   return new Promise((resolve, reject) => {
     db.transaction((transaction) => {
       transaction.executeSql(
         `INSERT INTO imgdiaries (title, body, imgdata)
-        VALUES (?, ?, ?)`, [imgDiary.title, imgDiary.body, imgDiary.imgdata],
+        VALUES (?, ?, ?)`, [imgdiary.title, imgdiary.body, imgdiary.imgdata],
         (tx, res) => resolve(res),
         (tx, err) => reject(err)
       )
@@ -54,7 +55,7 @@ export const findAll = () => {
         `SELECT * FROM imgdiaries`, [],
         (tx, res) => resolve(
           res.rows._array
-          .map(imgDiary => new imgDiary(imgDiary.id, imgDiary.title, imgDiary.body, imgDiary.imgdata))
+          .map(imgdiary => new ImgDiary(imgdiary.id, imgdiary.title, imgdiary.body, imgdiary.imgdata))
         ),
         (tx, err) => reject(err)
       )
