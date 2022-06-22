@@ -54,10 +54,22 @@ export const findAll = () => {
         `SELECT * FROM imgdiaries`, [],
         (tx, res) => resolve(
           res.rows._array
-          .map(imgDiary => new Todo(todo.id, todo.title, todo.completed === 1))
+          .map(imgDiary => new imgDiary(imgDiary.id, imgDiary.title, imgDiary.body, imgDiary.imgdata))
         ),
         (tx, err) => reject(err)
       )
+    })
+  })
+}
+
+export const deleteByID = (id) => {
+  return new Promise((resolve, reject) => {
+    db.transaction((transaction) => {
+        transaction.executeSql(
+            `DELETE FROM imgdiaries WHERE id = ?`, [id],
+            (tx, res) => resolve(res),
+            (tx, err) => reject(err)
+        )
     })
   })
 }
