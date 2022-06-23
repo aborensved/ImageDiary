@@ -20,16 +20,23 @@ const ListpostsScreen = ({navigation}) => {
 
     const emitter = new NativeEventEmitter()
 
-    const updateListener = emitter.addListener('update', ()  => {
+    const updateListener = emitter.addListener('knorr', () => {
         findAll()
             .then(res => setListDiaries(res))
-            .catch(err => console.log(err))
-    })
+            .catch(err => {
+                const errmsg = err
+                console.log(errmsg)}
+                )
+    })  
 
     useEffect(() => {
         findAll()
             .then(res => setListDiaries(res))
-            .catch(res => console.log(err))     
+            .catch(err => {
+                const errmsg = err
+                console.log(errmsg)}
+                )
+        return () => updateListener.remove()     
     }, [])
 
     return (

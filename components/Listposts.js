@@ -2,10 +2,9 @@ import {View, Text, FlatList, SafeAreaView} from 'react-native';
 import styles from '../styles/styles';
 
 
-const Listposts = ({listDiaries, setListDiaries}) => {
+const Listposts = ({listDiaries}) => {
 
-    const renderPosts = ({ item : post }) => {  
-        console.log(listDiaries)      
+    const renderPosts = ({ item : post }) => {
         return (
             <View  style={styles.listpostitem}>
                 <Text style={styles.listposttitle}>TITEL: {post.title}</Text>

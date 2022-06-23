@@ -4,17 +4,18 @@ import { Text, View, TextInput, Pressable } from 'react-native';
 import DiaryInput from '../components/DiaryInput';
 import { findAll } from '../database/db';
 import styles from '../styles/styles';
-import { setListDiaries } from './ListpostsScreen'
+import {listDiaries, setListDiaries} from './ListpostsScreen'
+
 
 const CreatepostScreen = ({navigation}) => {
 
     //const [diaries, setDiaries] = useState([])
 
-    useEffect(() => {
+    /* useEffect(() => {
         findAll()
             .then(res => console.log("Findall prompt: ", res))
             .catch(err => console.log(err))
-    }, [])
+    }, []) */
 
 
     

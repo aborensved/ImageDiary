@@ -3,10 +3,11 @@ import { View, TextInput, Pressable, Text, NativeEventEmitter } from "react-nati
 import { insert, findAll } from '../database/db'
 import ImgDiary from "../models/ImgDiary";
 import styles from "../styles/styles";
-import { setListDiaries } from '../screens/ListpostsScreen'
 
+const DiaryInput = ({setListDiaries, route, navigation}) => {
 
-const DiaryInput = ({navigation}) => {
+    
+
     const [titleInput, setTitleInput] = useState('');
     const [bodyInput, setBodyInput] = useState('');
     //const [imgInput, setImgInput] = useState('');
@@ -18,13 +19,13 @@ const DiaryInput = ({navigation}) => {
 
     const handleAddPost = () => {
         const imgdiary = new ImgDiary(0, titleInput, bodyInput, 'PLACEHOLDER')
-        insert(imgdiary)
-            .then(res => {
-                console.log(res)
+        insert(imgdiary)            
+            //.then(res => setListDiaries(res)) 
+            .then(res => emitter.emit('knorr'))                       
+            .catch(err => {
+                const errmsg = err
+                console.log(errmsg)
             })
-            .then(res => emitter.emit('update', res))
-            .then(res => setListDiaries(res))            
-            .catch(err => console.log(err))
         navigation.navigate('List posts')
          
     }
