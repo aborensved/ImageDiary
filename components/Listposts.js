@@ -2,13 +2,10 @@ import {View, Text, FlatList, SafeAreaView} from 'react-native';
 import styles from '../styles/styles';
 
 
-const Listposts = ({diaries}) => {
-
-    //TODO : Remove this mockdata!!
-    const DATA2 = ["Hej", "Hej igen", "Jag är här", 'Tjohej']
+const Listposts = ({listDiaries, setListDiaries}) => {
 
     const renderPosts = ({ item : post }) => {  
-        console.log(diaries)      
+        console.log(listDiaries)      
         return (
             <View  style={styles.listpostitem}>
                 <Text style={styles.listposttitle}>TITEL: {post.title}</Text>
@@ -20,7 +17,7 @@ const Listposts = ({diaries}) => {
     return (
         <View>
             <FlatList 
-            data={diaries}
+            data={listDiaries}
             renderItem={renderPosts}
             keyExtractor={(post, index) => index}            
             />

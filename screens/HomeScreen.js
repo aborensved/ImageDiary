@@ -4,7 +4,7 @@ import styles from '../styles/styles';
 import { AntDesign } from '@expo/vector-icons'
 import CreatePostButton from '../components/Createpostbutton';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
 
 
 
@@ -20,6 +20,7 @@ const HomeScreen = () => {
                 <CreatePostButton 
                     title={'Add new post'}
                     icon={<AntDesign name="plus" size={24} color="black" />}
+                    navigation={navigation}
                     
                     />
             </View>            

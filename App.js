@@ -8,10 +8,13 @@ import CreatepostScreen from './screens/CreatepostScreen';
 import { AntDesign } from '@expo/vector-icons'
 import { useEffect } from 'react';
 import { getDiariesInfo, initDB } from './database/db';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Tabs = createBottomTabNavigator();
+//const NativeStack = createNativeStackNavigator();
 
 export default function App() {
+
   useEffect(() => {
     initDB()
       .then(res => {

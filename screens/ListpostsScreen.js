@@ -1,17 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View , ScrollView} from 'react-native';
+import { useEffect, useState } from 'react';
+import { Text, View , ScrollView, NativeEventEmitter} from 'react-native';
 import Listposts from '../components/Listposts';
 import styles from '../styles/styles';
-import { diaries } from '../screens/CreatepostScreen'
+import { findAll } from '../database/db';
+
 
 // Kolla upp fetch för denna listan! 
 // ref: onsdagens lektion
+// Fetch avser HTTP anrop, vilket vi inte ska använda, då vi har en lokal databas.
+
+// Vi ska få in en en useState in hit som vi skickar in i ListPosts
+// Vi gör en hämtnign från DB som skickar dem vidare från skärmen och listar dem.
 
 
-const ListpostsScreen = () => {
+const ListpostsScreen = ({navigation}) => {
+
+    const [listDiaries, setListDiaries] = useState([])
+
+    const emitter = new NativeEventEmitter()
+
+    const updateListener = emitter.addListener('update', ()  => {
+        findAll()
+            .then(res => setListDiaries(res))
+            .catch(err => console.log(err))
+    })
+
+    useEffect(() => {
+        findAll()
+            .then(res => setListDiaries(res))
+            .catch(res => console.log(err))     
+    }, [])
+
     return (
         <View style={styles.container}>            
-            <Listposts /> 
+            <Listposts
+                listDiaries={listDiaries} 
+                setListDiaries={setListDiaries}
+                /> 
         </View>
     )
 }

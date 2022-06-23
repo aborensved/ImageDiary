@@ -4,10 +4,11 @@ import { Text, View, TextInput, Pressable } from 'react-native';
 import DiaryInput from '../components/DiaryInput';
 import { findAll } from '../database/db';
 import styles from '../styles/styles';
+import { setListDiaries } from './ListpostsScreen'
 
-const CreatepostScreen = () => {
+const CreatepostScreen = ({navigation}) => {
 
-    const [diaries, setDiaries] = useState([])
+    //const [diaries, setDiaries] = useState([])
 
     useEffect(() => {
         findAll()
@@ -23,7 +24,8 @@ const CreatepostScreen = () => {
                 <Text>Add Image to Post</Text>
             </Pressable>
             <DiaryInput 
-            setDiaries={setDiaries}
+            setListDiaries={setListDiaries}
+            navigation={navigation}
             />            
         </View>
     )

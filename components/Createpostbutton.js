@@ -1,7 +1,11 @@
 import {view, Pressable, Text} from 'react-native';
 
-const CreatePostButton = ({title, icon}) => {
-    return (<Pressable style={styles.createbutton}>
+const CreatePostButton = ({title, icon, navigation}) => {
+    return (
+    <Pressable
+        onPress={() => navigation.navigate('Create post')}
+        style={styles.createbutton}
+    >
         <Text>{title}</Text>
             {icon}                 
         </Pressable>
