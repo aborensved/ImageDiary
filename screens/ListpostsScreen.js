@@ -31,6 +31,15 @@ const ListpostsScreen = ({ navigation }) => {
       });
   });
 
+  const deleteListener = emitter.addListener("delete", () => {
+    findAll()
+      .then((res) => setListDiaries(res))
+      .catch((err) => {
+        const errmsg = err;
+        console.log(errmsg);
+      });
+  });
+
   useEffect(() => {
     findAll()
       .then((res) => setListDiaries(res))
@@ -38,7 +47,9 @@ const ListpostsScreen = ({ navigation }) => {
         const errmsg = err;
         console.log(errmsg);
       });
-    return () => updateListener.remove();
+    return () => {
+      updateListener.remove();
+      deleteListener.remove();}
   }, []);
 
   const ListView = ({ navigation }) => {

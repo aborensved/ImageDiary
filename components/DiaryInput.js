@@ -15,13 +15,19 @@ const DiaryInput = ({setListDiaries, route, navigation}) => {
     const handleTitleChange = (text) => setTitleInput(text)
     const handleBodyChange = (text) => setBodyInput(text)
 
+    const resetInput = () => {
+        setTitleInput('');
+        setBodyInput('');
+    }
+
     const emitter = new NativeEventEmitter()
 
     const handleAddPost = () => {
         const imgdiary = new ImgDiary(0, titleInput, bodyInput, 'PLACEHOLDER')
         insert(imgdiary)            
             //.then(res => setListDiaries(res)) 
-            .then(res => emitter.emit('knorr'))                       
+            .then(res => emitter.emit('knorr'))
+            .then(res => resetInput())                       
             .catch(err => {
                 const errmsg = err
                 console.log(errmsg)
@@ -31,9 +37,10 @@ const DiaryInput = ({setListDiaries, route, navigation}) => {
     }
 
     return (
-        <View>
+        <View style={styles.container}>
             <View>
                 <TextInput
+                maxLength={20}
                 style={styles.createinputtitle} 
                 onChangeText={handleTitleChange}
                 value={titleInput}
@@ -41,6 +48,9 @@ const DiaryInput = ({setListDiaries, route, navigation}) => {
             </View>
             <View>
                 <TextInput 
+                autoFocus
+                multiline
+                numberOfLines={12}
                 style={styles.createinputbody}
                 onChangeText={handleBodyChange}
                 value={bodyInput}

@@ -3,9 +3,7 @@ import { StyleSheet, Dimensions } from "react-native";
 export default styles = StyleSheet.create({
     container: {
       flex: 1,      
-      backgroundColor: '#aba',
-      alignItems: 'center',
-      padding: 15,    
+      backgroundColor: '#aba',    
       
     },
 
@@ -14,38 +12,54 @@ export default styles = StyleSheet.create({
         backgroundColor: "salmon",
         width: (Dimensions.get('screen').width * 0.85),
         height: (Dimensions.get('screen').height * 0.2),
-        marginBottom: 15,  
+        marginVertical: 15,
+        alignSelf: 'center'  
     },
     homelatestpost: {
         width: (Dimensions.get('screen').width * 0.85),
         height: (Dimensions.get('screen').height * 0.4),
         backgroundColor: '#99de99',
-        marginBottom: 15,  
+        marginBottom: 15,
+        alignSelf: 'center'   
     },
 
 
     // List posts Styling
     listpostitem: {
+        flexDirection: 'row',
         padding: 15,     
-        backgroundColor: "#99de99",
-        marginBottom: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: "#99deaaee",
+        marginVertical: 7,
         borderRadius: 15,
-        width: (Dimensions.get('screen').width * 0.85)        
+        width: (Dimensions.get('screen').width * 0.85),
+        alignSelf: 'center'         
     },
+    listbutton: {
+        flexDirection: 'row',
+        width: '100%',
+        
+    },
+    listimage: {
+        width: (Dimensions.get('screen').width * 0.20),
+        height: (Dimensions.get('screen').width * 0.20),
+        borderRadius: 10,
+    },
+    listimageview: {
+        justifyContent: 'center',
+        color: "white",
+        fontSize: 25,
+    }, 
     listposttitle: {
         color: "white",
         fontSize: 25,
     },
-    listposttext: {
-        color: "grey",
-        fontSize: 15,        
-    },
-    listimage: {
-        width: (Dimensions.get('screen').width * 0.20),
-        height: (Dimensions.get('screen').width * 0.20)
-    },
+    listtitleview: {
+        marginLeft: 10,        
+        justifyContent: 'center',
+        color: "white",
+        fontSize: 25,
+    },    
+    
 
 
     // Create post Styling
@@ -56,7 +70,8 @@ export default styles = StyleSheet.create({
         borderRadius: 15,
         width: (Dimensions.get('screen').width * 0.70),
         height: (Dimensions.get('screen').height * 0.3),
-        marginBottom: 25
+        marginVertical: 20,
+        alignSelf: 'center' 
     },
     createinputtitle: {
         backgroundColor: "white",
@@ -65,16 +80,20 @@ export default styles = StyleSheet.create({
         height: 50,
         marginBottom: 15,
         padding: 10,
-        fontSize: 20
+        fontSize: 20,
+        alignSelf: 'center' 
     },
     createinputbody: {
+        flex: 1,
+        textAlignVertical: "top",
+        padding: 10,
         backgroundColor: "white",
         borderRadius: 15,
         width: (Dimensions.get('screen').width * 0.80),
-        height: 200,
+        height: (Dimensions.get('screen').height * 0.30),
         marginBottom: 15,
-        padding: 10,
         fontSize: 16,
+        alignSelf: 'center' 
     },
     createbutton: {
         justifyContent: "center",
@@ -82,29 +101,59 @@ export default styles = StyleSheet.create({
         backgroundColor: "lightblue",
         borderRadius: 15,
         width: (Dimensions.get('screen').width * 0.50),
-        height: 50 
+        height: 50,
+        alignSelf: 'center',
+        marginBottom: 25
     },
 
-    // PostdetailScreen styling
+    // PostdetailScreen styling    
     detailimage: {
         width: (Dimensions.get('screen').width),
         height: (Dimensions.get('screen').width),
     },
-    detailbutton: {        
+    detailtitleview: {        
+        width: (Dimensions.get('screen').width),
+        backgroundColor: '#11111188',
+        borderBottomWidth: 2,
+        borderBottomColor: 'salmon',
+    },
+    detailtitle: {
+        alignSelf: 'center',
+        fontSize: 22,
+        padding: 10,
+        textShadowColor: '#111111ff',
+        textShadowOffset: { width: 0, height: 3},
+        textShadowRadius: 10,
+        color: 'white'
+    },
+    detailbodyview: {        
+        width: (Dimensions.get('screen').width),
+        marginBottom: 10,
+    },
+    detailbody: {
+        padding: 10,
+        fontSize: 16,
+    },
+    detailbutton: {
+        width: (Dimensions.get('screen').width * .8),
+        alignSelf: 'center',
         padding: 10,
         borderRadius: 15,
         backgroundColor: 'lightblue',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 15  
     },
-    detaildeletebutton: {        
+    detaildeletebutton: {
+        width: (Dimensions.get('screen').width * .8),        
         padding: 10,
         borderRadius: 15,
         backgroundColor: 'red',
-        alignItems: 'center',        
+        alignItems: 'center',
+        alignSelf: 'center',
+        marginBottom: 15        
     },
     detaildeletetext: {
         color: '#fff'
     }
-
     
   });

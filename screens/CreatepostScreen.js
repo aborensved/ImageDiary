@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { Text, View, TextInput, Pressable } from 'react-native';
+import { Text, View, TextInput, Pressable, ScrollView } from 'react-native';
 import DiaryInput from '../components/DiaryInput';
 import { findAll } from '../database/db';
 import styles from '../styles/styles';
@@ -20,7 +20,7 @@ const CreatepostScreen = ({navigation}) => {
 
     
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <Pressable style={styles.createaddimage}>
                 <Text>Add Image to Post</Text>
             </Pressable>
@@ -28,8 +28,9 @@ const CreatepostScreen = ({navigation}) => {
             setListDiaries={setListDiaries}
             navigation={navigation}
             />            
-        </View>
+        </ScrollView>
     )
+    
 }
 
 export default CreatepostScreen;

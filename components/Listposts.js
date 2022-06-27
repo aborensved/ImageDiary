@@ -8,14 +8,28 @@ const Listposts = ({listDiaries, navigation}) => {
         navigation.navigate('PostdetailScreen', {post: post})
     }
 
+    // text cutoff
+    // bild på en plats, text anpassar sig efter sidan.
+
     const renderPosts = ({ item: post }) => {
         return (
-            <View  style={styles.listpostitem}>
-                <Image source={require('../assets/placeholder_img.jpg')} style={styles.listimage} />
-                <Pressable onPress={() => handlePress(post)} post={post}>
-                    <Text style={styles.listposttitle}>TITEL: {post.title}</Text>
-                </Pressable>
-                <Text style={styles.listposttext}>BODY: {post.body}</Text>
+            <View style={styles.listpostitem}>                
+                <Pressable 
+                    onPress={() => handlePress(post)} 
+                    post={post} 
+                    style={styles.listbutton}>
+                    <View style={styles.listimageview}>
+                        <Image 
+                            source={require('../assets/placeholder_img.jpg')} 
+                            style={styles.listimage} 
+                        />
+                    </View>
+                    <View style={styles.listtitleview}>
+                        <Text 
+                            style={styles.listposttitle}>{post.title}
+                        </Text>
+                    </View>                    
+                </Pressable>                
             </View>
         )        
     }
