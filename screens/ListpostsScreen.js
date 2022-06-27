@@ -46,12 +46,12 @@ const ListpostsScreen = ({navigation}) => {
         <RootStack.Navigator>
             <RootStack.Group>
                 <RootStack.Screen name='List View'>
-                <View style={styles.container}>            
-                    <Listposts
+                    <View style={styles.container}>            
+                        <Listposts
                         listDiaries={listDiaries} 
                         setListDiaries={setListDiaries}
                         />
-                </View> 
+                    </View> 
                 </RootStack.Screen>
                 
             </RootStack.Group>
