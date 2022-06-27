@@ -1,4 +1,5 @@
 import { View, Text, Image } from 'react-native'
+import styles from '../styles/styles'
 
 const Postdetailscreen = ({route, navigation}) => {
 
@@ -6,7 +7,7 @@ const Postdetailscreen = ({route, navigation}) => {
 
     return (
         <View>
-            <Image source={require('../assets/placeholder_img.jpg')}></Image>
+            <Image source={require('../assets/placeholder_img.jpg')} style={styles.detailimage}></Image>
             <Text>Title: {post.title}</Text>
             <Text>Body: {post.body}</Text>
         </View>

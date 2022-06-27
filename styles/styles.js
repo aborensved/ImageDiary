@@ -79,5 +79,12 @@ export default styles = StyleSheet.create({
         width: (Dimensions.get('screen').width * 0.50),
         height: 50 
     },
+
+    // PostdetailScreen styling
+    detailimage: {
+        width: (Dimensions.get('screen').width),
+        height: (Dimensions.get('screen').width),
+    },
+
     
   });
