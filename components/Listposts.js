@@ -1,13 +1,19 @@
-import {View, Text, FlatList, SafeAreaView} from 'react-native';
+import {View, Text, FlatList, SafeAreaView, Pressable} from 'react-native';
 import styles from '../styles/styles';
 
 
-const Listposts = ({listDiaries}) => {
+const Listposts = ({listDiaries, navigation}) => {
 
-    const renderPosts = ({ item : post }) => {
+    const handlePress = (post) => {
+        navigation.navigate('PostdetailScreen', {post: post})
+    }
+
+    const renderPosts = ({ item: post }) => {
         return (
             <View  style={styles.listpostitem}>
-                <Text style={styles.listposttitle}>TITEL: {post.title}</Text>
+                <Pressable onPress={() => handlePress(post)} post={post}>
+                    <Text style={styles.listposttitle}>TITEL: {post.title}</Text>
+                </Pressable>
                 <Text style={styles.listposttext}>BODY: {post.body}</Text>
             </View>
         )        

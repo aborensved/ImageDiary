@@ -6,6 +6,7 @@ import styles from '../styles/styles';
 import { findAll } from '../database/db';
 import { createNativeStackNavigator} from '@react-navigation/native-stack';
 import Postdetailscreen from './PostdetailScreen';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 // Kolla upp fetch för denna listan! 
@@ -42,26 +43,32 @@ const ListpostsScreen = ({navigation}) => {
         return () => updateListener.remove()     
     }, [])
 
+    const ListView = ({navigation}) => {
+        return (
+            <View style={styles.container}>            
+            <Listposts
+            listDiaries={listDiaries} 
+            setListDiaries={setListDiaries}
+            navigation={navigation}
+            />
+        </View> 
+        )
+    }
+
     return (
-        <RootStack.Navigator>
-            <RootStack.Group>
-                <RootStack.Screen name='List View'>
-                    <View style={styles.container}>            
-                        <Listposts
-                        listDiaries={listDiaries} 
-                        setListDiaries={setListDiaries}
-                        />
-                    </View> 
-                </RootStack.Screen>
+    
+            <RootStack.Navigator>
+                <RootStack.Group>
+                    <RootStack.Screen name='ListView' component={ListView} options={{headerShown: false}}  />         
+                </RootStack.Group>
+            <RootStack.Group screenOptions={ { presentation: 'modal'} }>
+                <RootStack.Screen name="PostdetailScreen" component={Postdetailscreen}>
                 
+        
+                </RootStack.Screen>
             </RootStack.Group>
-          <RootStack.Group screenOptions={ { presentation: 'modal'} }>
-            <RootStack.Screen name="MyModal" component={Postdetailscreen}>
-            
-      
-            </RootStack.Screen>
-          </RootStack.Group>
-        </RootStack.Navigator>
+            </RootStack.Navigator>
+       
         
     )
 }

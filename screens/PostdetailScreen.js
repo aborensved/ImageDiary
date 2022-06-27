@@ -1,10 +1,14 @@
 import { View, Text, Image } from 'react-native'
 
-const Postdetailscreen = () => {
+const Postdetailscreen = ({route, navigation}) => {
+
+    const {post} = route.params
+
     return (
         <View>
-            <Image source={'../assets/placeholder_img.jpg'}></Image>
-            <Text>Hello!!</Text>
+            <Image source={require('../assets/placeholder_img.jpg')}></Image>
+            <Text>Title: {post.title}</Text>
+            <Text>Body: {post.body}</Text>
         </View>
     )
 }
