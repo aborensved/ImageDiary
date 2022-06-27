@@ -42,6 +42,11 @@ export default styles = StyleSheet.create({
         color: "grey",
         fontSize: 15,        
     },
+    listimage: {
+        width: (Dimensions.get('screen').width * 0.20),
+        height: (Dimensions.get('screen').width * 0.20)
+    },
+
 
     // Create post Styling
     createaddimage: {
@@ -85,6 +90,21 @@ export default styles = StyleSheet.create({
         width: (Dimensions.get('screen').width),
         height: (Dimensions.get('screen').width),
     },
+    detailbutton: {        
+        padding: 10,
+        borderRadius: 15,
+        backgroundColor: 'lightblue',
+        alignItems: 'center'
+    },
+    detaildeletebutton: {        
+        padding: 10,
+        borderRadius: 15,
+        backgroundColor: 'red',
+        alignItems: 'center',        
+    },
+    detaildeletetext: {
+        color: '#fff'
+    }
 
     
   });
