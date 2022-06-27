@@ -5,15 +5,20 @@ import { StyleSheet, Text, View } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import ListpostsScreen from './screens/ListpostsScreen';
 import CreatepostScreen from './screens/CreatepostScreen';
+import PostdetailScreen from './screens/PostdetailScreen'
 import { AntDesign } from '@expo/vector-icons'
 import { useEffect } from 'react';
 import { getDiariesInfo, initDB } from './database/db';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator} from '@react-navigation/native-stack';
+import { render } from 'react-dom';
 
-const Tabs = createBottomTabNavigator();
+
 //const NativeStack = createNativeStackNavigator();
 
 export default function App() {
+
+  const Tabs = createBottomTabNavigator();
+  const RootStack = createNativeStackNavigator();
 
   useEffect(() => {
     initDB()
@@ -28,19 +33,21 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tabs.Navigator>
-        <Tabs.Screen 
-          name="Home" 
-          component={HomeScreen} 
-          options={{ tabBarIcon : () => <AntDesign name="home" size={24} color="black" />}}/>
-        <Tabs.Screen 
-          name="List posts" 
-          component={ListpostsScreen} 
-          options={{ tabBarIcon : () => <AntDesign name="bars" size={24} color="black" />}}/>
-        <Tabs.Screen 
-          name="Create post" 
-          component={CreatepostScreen} 
-          options={{ tabBarIcon : () => <AntDesign name="plus" size={24} color="black" />}}/>
-      </Tabs.Navigator>
+        <Tabs.Group>
+          <Tabs.Screen 
+            name="Home" 
+            component={HomeScreen} 
+            options={{ tabBarIcon : () => <AntDesign name="home" size={24} color="black" />}}/>
+          <Tabs.Screen 
+            name="List posts" 
+            component={ListpostsScreen} 
+            options={{ tabBarIcon : () => <AntDesign name="bars" size={24} color="black" />}}/>
+          <Tabs.Screen 
+            name="Create post" 
+            component={CreatepostScreen} 
+            options={{ tabBarIcon : () => <AntDesign name="plus" size={24} color="black" />}}/>
+        </Tabs.Group>
+      </Tabs.Navigator>      
     </NavigationContainer>
   );
 }

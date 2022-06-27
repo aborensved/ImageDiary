@@ -4,6 +4,8 @@ import { Text, View , ScrollView, NativeEventEmitter} from 'react-native';
 import Listposts from '../components/Listposts';
 import styles from '../styles/styles';
 import { findAll } from '../database/db';
+import { createNativeStackNavigator} from '@react-navigation/native-stack';
+import Postdetailscreen from './PostdetailScreen';
 
 
 // Kolla upp fetch för denna listan! 
@@ -15,6 +17,7 @@ import { findAll } from '../database/db';
 
 
 const ListpostsScreen = ({navigation}) => {
+    const RootStack = createNativeStackNavigator();
 
     const [listDiaries, setListDiaries] = useState([])
 
@@ -40,12 +43,26 @@ const ListpostsScreen = ({navigation}) => {
     }, [])
 
     return (
-        <View style={styles.container}>            
-            <Listposts
-                listDiaries={listDiaries} 
-                setListDiaries={setListDiaries}
-                /> 
-        </View>
+        <RootStack.Navigator>
+            <RootStack.Group>
+                <RootStack.Screen name='List View'>
+                <View style={styles.container}>            
+                    <Listposts
+                        listDiaries={listDiaries} 
+                        setListDiaries={setListDiaries}
+                        />
+                </View> 
+                </RootStack.Screen>
+                
+            </RootStack.Group>
+          <RootStack.Group screenOptions={ { presentation: 'modal'} }>
+            <RootStack.Screen name="MyModal" component={Postdetailscreen}>
+            
+      
+            </RootStack.Screen>
+          </RootStack.Group>
+        </RootStack.Navigator>
+        
     )
 }
 
