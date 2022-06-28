@@ -3,10 +3,11 @@ import { Pressable, Text, View } from 'react-native';
 import styles from '../styles/styles';
 import { AntDesign } from '@expo/vector-icons'
 import CreatePostButton from '../components/Createpostbutton';
+import LatestPost from '../components/LatestPost';
 
 const HomeScreen = ({navigation}) => {
 
-
+    
 
     return (
         <View style={styles.container}>
@@ -14,7 +15,8 @@ const HomeScreen = ({navigation}) => {
                 <Text>Välkommen till Dagboken</Text>
             </View>
             <View style={styles.homelatestpost}>
-                <Text>SENASTE INLÄGGET</Text>
+                <Text>Här ska senaste posten vara</Text>
+                <LatestPost/>
             </View>
             <View>
                 <CreatePostButton 

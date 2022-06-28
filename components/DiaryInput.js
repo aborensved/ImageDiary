@@ -4,9 +4,7 @@ import { insert, findAll } from '../database/db'
 import ImgDiary from "../models/ImgDiary";
 import styles from "../styles/styles";
 
-const DiaryInput = ({setListDiaries, route, navigation}) => {
-
-    
+const DiaryInput = ({ navigation}) => {    
 
     const [titleInput, setTitleInput] = useState('');
     const [bodyInput, setBodyInput] = useState('');

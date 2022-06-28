@@ -74,3 +74,18 @@ export const deleteByID = (id) => {
     })
   })
 }
+
+export const findLatestPost = () => {
+  return new Promise((resolve, reject) => {
+    db.transaction((transaction) => {
+        transaction.executeSql(
+            `SELECT * FROM imgdiaries WHERE id = (SELECT MAX(id) FROM imgdiaries)`, [],
+            (tx, res) => resolve(
+              res.rows._array
+              .map(imgdiary => new ImgDiary(imgdiary.id, imgdiary.title, imgdiary.body, imgdiary.imgdata)
+              )),
+            (tx, err) => reject(err)
+        )
+    })
+  })
+}

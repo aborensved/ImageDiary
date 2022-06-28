@@ -7,6 +7,7 @@ import { findAll } from "../database/db";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Postdetailscreen from "./PostdetailScreen";
 import { NavigationContainer } from "@react-navigation/native";
+import LatestPost from "../components/LatestPost";
 
 // Kolla upp fetch för denna listan!
 // ref: onsdagens lektion
@@ -59,7 +60,7 @@ const ListpostsScreen = ({ navigation }) => {
           listDiaries={listDiaries}
           setListDiaries={setListDiaries}
           navigation={navigation}
-        />
+        />        
       </View>
     );
   };
@@ -83,5 +84,6 @@ const ListpostsScreen = ({ navigation }) => {
     </RootStack.Navigator>
   );
 };
+
 
 export default ListpostsScreen;

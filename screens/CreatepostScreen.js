@@ -9,16 +9,6 @@ import {listDiaries, setListDiaries} from './ListpostsScreen'
 
 const CreatepostScreen = ({navigation}) => {
 
-    //const [diaries, setDiaries] = useState([])
-
-    /* useEffect(() => {
-        findAll()
-            .then(res => console.log("Findall prompt: ", res))
-            .catch(err => console.log(err))
-    }, []) */
-
-
-    
     return (
         <ScrollView style={styles.container}>
             <Pressable style={styles.createaddimage}>
