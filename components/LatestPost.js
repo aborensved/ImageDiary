@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { Text, View, Image, ScrollView, NativeEventEmitter, FlatList } from "react-native";
 import { findAll, findByID, findLatestPost } from "../database/db";
-import ImgDiary from "../models/ImgDiary";
 import styles from '../styles/styles';
 
 const LatestPost = () => {
@@ -34,33 +33,19 @@ const LatestPost = () => {
     }
 
     useEffect(() => {start();
-    return () => updateListener.remove()}, [])
-
-    const HomeTitle = () => {
-        return after.map((imgdiary2) => {
-            return (
-                <View>
-                    <Image 
-                    source={require('../assets/placeholder_img.jpg')}
-                    style={styles.listimage}
-                    />
-                    <Text key={imgdiary2.title.toString()}>{imgdiary2.title}</Text>
-                </View>
-            )
-        })
-
-        
-        
-    }
-
-
-
+    return () => updateListener.remove()}, [])    
     
-    return (
-        <View style={styles.listpostitem}>            
-            <HomeTitle/>     
-        </View>
-    )        
+    return after.map((imgdiary2, id) => {
+        return (
+            <View key={id}>
+                <Image                 
+                source={require('../assets/placeholder_img.jpg')}
+                style={styles.homelatestimage}
+                />
+                <Text style={styles.homelatestposttitle}>"{imgdiary2.title}"</Text>
+            </View>
+        )
+    })       
     
         
     

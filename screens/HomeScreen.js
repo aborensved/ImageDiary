@@ -12,18 +12,17 @@ const HomeScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
             <View style={styles.hometop}>
-                <Text>Välkommen till Dagboken</Text>
+                <Text style={styles.hometoptext}>Välkommen till Dagboken</Text>
             </View>
             <View style={styles.homelatestpost}>
-                <Text>Här ska senaste posten vara</Text>
-                <LatestPost/>
+                <Text style={styles.homelatestposttext}>Senaste dagboksinlägget: </Text>
+                <LatestPost  style={styles.homelatestpost}/>
             </View>
             <View>
                 <CreatePostButton 
                     title={'Add new post'}
                     icon={<AntDesign name="plus" size={24} color="black" />}
-                    navigation={navigation}
-                    
+                    navigation={navigation}                    
                     />
             </View>            
         </View>

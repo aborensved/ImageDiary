@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { getDiariesInfo, initDB } from './database/db';
 import { createNativeStackNavigator} from '@react-navigation/native-stack';
 import { render } from 'react-dom';
+import {styles} from './styles/styles'
 
 
 //const NativeStack = createNativeStackNavigator();
@@ -32,20 +33,27 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Tabs.Navigator>
+      <Tabs.Navigator
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: '#bbddbb',
+          
+        },
+      }}>
         <Tabs.Group>
           <Tabs.Screen 
             name="Home" 
             component={HomeScreen} 
-            options={{ tabBarIcon : () => <AntDesign name="home" size={24} color="black" />}}/>
+            options={{ tabBarIcon : () => <AntDesign name="home" size={24} color="green" />}}
+            />
           <Tabs.Screen 
             name="List posts" 
             component={ListpostsScreen} 
-            options={{ tabBarIcon : () => <AntDesign name="bars" size={24} color="black" />}}/>
+            options={{ tabBarIcon : () => <AntDesign name="bars" size={24} color="green" />}}/>
           <Tabs.Screen 
             name="Create post" 
             component={CreatepostScreen} 
-            options={{ tabBarIcon : () => <AntDesign name="plus" size={24} color="black" />}}/>
+            options={{ tabBarIcon : () => <AntDesign name="plus" size={24} color="green" />}}/>
         </Tabs.Group>
       </Tabs.Navigator>      
     </NavigationContainer>

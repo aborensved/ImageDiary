@@ -59,7 +59,7 @@ const DiaryInput = ({ navigation}) => {
             onPress={handleAddPost}
             navigation={navigation}
             >
-                <Text>Add post</Text>
+                <Text style={styles.createbuttontext}>Add post</Text>
             </Pressable>
         </View>
         

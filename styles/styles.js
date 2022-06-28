@@ -9,18 +9,49 @@ export default styles = StyleSheet.create({
 
     // Home Styling
     hometop: {
-        backgroundColor: "salmon",
+        backgroundColor: "#11771166",
         width: (Dimensions.get('screen').width * 0.85),
-        height: (Dimensions.get('screen').height * 0.2),
+        height: (Dimensions.get('screen').height * 0.08),
         marginVertical: 15,
-        alignSelf: 'center'  
+        alignSelf: 'center',
+        padding: 15,
+        borderRadius: 15          
+    },
+    hometoptext: {
+        color: 'white',
+        fontSize: 25,
+        alignSelf: 'center'
     },
     homelatestpost: {
         width: (Dimensions.get('screen').width * 0.85),
-        height: (Dimensions.get('screen').height * 0.4),
-        backgroundColor: '#99de99',
-        marginBottom: 15,
-        alignSelf: 'center'   
+        height: (Dimensions.get('screen').height * 0.5),
+        backgroundColor: '#eeeeee',
+        marginBottom: (Dimensions.get('screen').height * 0.1),
+        alignSelf: 'center',
+        borderRadius: 5,
+        padding: 10,
+        shadowColor: '#111',
+        shadowOffset: { width: 0, height: 5},
+        shadowOpacity: 1,
+        shadowRadius: 10,
+        elevation: 10,
+    },
+    homelatestimage: {
+        width: (Dimensions.get('screen').width * 0.70),
+        height: (Dimensions.get('screen').width * 0.70),
+        borderRadius: 10,
+        alignSelf: 'center',
+        marginVertical: 10,
+    },
+    homelatestposttext: {
+        alignSelf: 'center',
+        
+    },
+    homelatestposttitle: {
+        alignSelf: 'center',        
+        fontSize: 22,
+        color: '#117711',
+        fontStyle: "italic"
     },
 
 
@@ -66,12 +97,15 @@ export default styles = StyleSheet.create({
     createaddimage: {
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "lightblue",
+        backgroundColor: "#11771133",
         borderRadius: 15,
         width: (Dimensions.get('screen').width * 0.70),
         height: (Dimensions.get('screen').height * 0.3),
         marginVertical: 20,
         alignSelf: 'center' 
+    },
+    createimagetext: {
+        color: 'white'
     },
     createinputtitle: {
         backgroundColor: "white",
@@ -98,12 +132,15 @@ export default styles = StyleSheet.create({
     createbutton: {
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "lightblue",
-        borderRadius: 15,
+        backgroundColor: "#11771177",
+        borderRadius: 20,
         width: (Dimensions.get('screen').width * 0.50),
         height: 50,
         alignSelf: 'center',
         marginBottom: 25
+    },
+    createbuttontext: {
+        color: 'white'
     },
 
     // PostdetailScreen styling    
@@ -139,7 +176,7 @@ export default styles = StyleSheet.create({
         alignSelf: 'center',
         padding: 10,
         borderRadius: 15,
-        backgroundColor: 'lightblue',
+        backgroundColor: '#11771177',
         alignItems: 'center',
         marginBottom: 15  
     },

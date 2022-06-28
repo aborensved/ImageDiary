@@ -12,7 +12,7 @@ const CreatepostScreen = ({navigation}) => {
     return (
         <ScrollView style={styles.container}>
             <Pressable style={styles.createaddimage}>
-                <Text>Add Image to Post</Text>
+                <Text style={styles.createimagetext}>Add Image to Post</Text>
             </Pressable>
             <DiaryInput 
             setListDiaries={setListDiaries}
