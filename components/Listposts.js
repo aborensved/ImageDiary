@@ -1,5 +1,6 @@
 import {View, Text, FlatList, SafeAreaView, Pressable, Image} from 'react-native';
 import styles from '../styles/styles';
+import Images from '../assets';
 
 
 const Listposts = ({listDiaries, navigation}) => {
@@ -12,6 +13,17 @@ const Listposts = ({listDiaries, navigation}) => {
     // bild på en plats, text anpassar sig efter sidan.
 
     const renderPosts = ({ item: post }) => {
+        var imgsource = Images.placeholder        
+        switch (post.imgdata) {
+            case 'mood_happy': imgsource = Images.imagehappy
+                break;
+            case 'mood_middle' : imgsource = Images.imagemiddle
+                break;
+            case 'mood_sad' : imgsource = Images.imagesad
+                break;
+            default: console.log('No image data was found')
+        }            
+        
         return (
             <View style={styles.listpostitem}>                
                 <Pressable 
@@ -20,7 +32,7 @@ const Listposts = ({listDiaries, navigation}) => {
                     style={styles.listbutton}>
                     <View style={styles.listimageview}>
                         <Image 
-                            source={require('../assets/placeholder_img.jpg')} 
+                            source={imgsource} 
                             style={styles.listimage} 
                         />
                     </View>
@@ -41,7 +53,9 @@ const Listposts = ({listDiaries, navigation}) => {
             renderItem={renderPosts}
             keyExtractor={(post, index) => index}            
             />
+            
         </View>
+        
     )
 }
 

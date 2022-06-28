@@ -1,17 +1,64 @@
 import { useState } from "react";
-import { View, TextInput, Pressable, Text, NativeEventEmitter } from "react-native";
+import { View, TextInput, Pressable, Text, NativeEventEmitter, FlatList, ImageBackground } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { insert, findAll } from '../database/db'
 import ImgDiary from "../models/ImgDiary";
 import styles from "../styles/styles";
 
-const DiaryInput = ({ navigation}) => {    
+
+
+
+
+const DiaryInput = ({ navigation}) => {
+
+    const DATA2 = [
+        {
+            id: 0,
+            title: "Happy",
+            ref: 'mood_happy'
+        },
+        {
+            id: 1,
+            title: "OK",
+            ref: 'mood_middle'
+        },
+        {
+            id: 2,
+            title: "Sad",
+            ref: 'mood_sad'
+        }
+    ]
+
+    const renderMood = ({item}) => {
+        
+        const backgroundColor = item.id === selectedId ? "#117711":"#11771155";
+        
+        
+        return (
+            <Pressable 
+                item={item}
+                onPress={() => {
+                setSelectedId(item.id);
+                setImgInput(item.ref);
+                }} 
+                style={styles.createmooditem}
+                backgroundColor={backgroundColor}
+                >             
+                <Text 
+                style={styles.createmoodtext} 
+                >"{item.title}"</Text>                
+            </Pressable>    
+        )
+    };
 
     const [titleInput, setTitleInput] = useState('');
     const [bodyInput, setBodyInput] = useState('');
-    //const [imgInput, setImgInput] = useState('');
+    const [imgInput, setImgInput] = useState('');
+    const [selectedId, setSelectedId] = useState(null);
 
     const handleTitleChange = (text) => setTitleInput(text)
     const handleBodyChange = (text) => setBodyInput(text)
+    
 
     const resetInput = () => {
         setTitleInput('');
@@ -21,9 +68,8 @@ const DiaryInput = ({ navigation}) => {
     const emitter = new NativeEventEmitter()
 
     const handleAddPost = () => {
-        const imgdiary = new ImgDiary(0, titleInput, bodyInput, 'PLACEHOLDER')
-        insert(imgdiary)            
-            //.then(res => setListDiaries(res)) 
+        const imgdiary = new ImgDiary(0, titleInput, bodyInput, imgInput)
+        insert(imgdiary)
             .then(res => emitter.emit('knorr'))
             .then(res => resetInput())                       
             .catch(err => {
@@ -36,6 +82,15 @@ const DiaryInput = ({ navigation}) => {
 
     return (
         <View style={styles.container}>
+            <View style={styles.createmoodcontainer}>
+                <Text style={styles.createmoodcontaintertext}>Choose a mood:</Text>
+                <FlatList
+                data={DATA2}
+                renderItem={renderMood}
+                keyExtractor={(mood , index) => index}
+                extraData={selectedId}
+                />
+            </View>
             <View>
                 <TextInput
                 maxLength={20}

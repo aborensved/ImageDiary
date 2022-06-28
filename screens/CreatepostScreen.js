@@ -4,21 +4,19 @@ import { Text, View, TextInput, Pressable, ScrollView } from 'react-native';
 import DiaryInput from '../components/DiaryInput';
 import { findAll } from '../database/db';
 import styles from '../styles/styles';
-import {listDiaries, setListDiaries} from './ListpostsScreen'
+
 
 
 const CreatepostScreen = ({navigation}) => {
 
+    
+
     return (
-        <ScrollView style={styles.container}>
-            <Pressable style={styles.createaddimage}>
-                <Text style={styles.createimagetext}>Add Image to Post</Text>
-            </Pressable>
-            <DiaryInput 
-            setListDiaries={setListDiaries}
+        <View style={styles.container}>            
+            <DiaryInput             
             navigation={navigation}
             />            
-        </ScrollView>
+        </View>
     )
     
 }

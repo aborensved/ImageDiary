@@ -89,23 +89,41 @@ export default styles = StyleSheet.create({
         justifyContent: 'center',
         color: "white",
         fontSize: 25,
+    },
+    listremoveall: {
+        width: (Dimensions.get('screen').width),
+        backgroundColor: 'red'
     },    
     
 
 
-    // Create post Styling
-    createaddimage: {
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#11771133",
-        borderRadius: 15,
-        width: (Dimensions.get('screen').width * 0.70),
-        height: (Dimensions.get('screen').height * 0.3),
+    // Create post Styling    
+    createmoodcontainer: {
         marginVertical: 20,
-        alignSelf: 'center' 
+        backgroundColor: "#11771133",
+        width: (Dimensions.get('screen').width * 0.80),
+        height: (Dimensions.get('screen').height * 0.28),
+        alignSelf: 'center',
+        borderRadius: 15,
+        padding: 10
     },
-    createimagetext: {
-        color: 'white'
+    createmoodcontaintertext: {
+        color: 'white',
+        alignSelf: 'center',
+        fontSize: 15,
+    },
+    createmooditem: {
+        backgroundColor: '#11771177',
+        width: (Dimensions.get('screen').width * 0.50),
+        alignSelf: "center",
+        padding: 15,
+        borderRadius: 25,
+        marginVertical: 3
+    },
+    createmoodtext: {
+        color: 'white',
+        fontSize: 18,
+        alignSelf: "center"
     },
     createinputtitle: {
         backgroundColor: "white",
@@ -118,7 +136,7 @@ export default styles = StyleSheet.create({
         alignSelf: 'center' 
     },
     createinputbody: {
-        flex: 1,
+        //flex: 1,
         textAlignVertical: "top",
         padding: 10,
         backgroundColor: "white",
@@ -133,7 +151,7 @@ export default styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#11771177",
-        borderRadius: 20,
+        borderRadius: 25,
         width: (Dimensions.get('screen').width * 0.50),
         height: 50,
         alignSelf: 'center',

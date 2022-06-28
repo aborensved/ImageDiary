@@ -1,9 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { Text, View, ScrollView, NativeEventEmitter } from "react-native";
+import { Text, View, ScrollView, NativeEventEmitter, Pressable } from "react-native";
 import Listposts from "../components/Listposts";
 import styles from "../styles/styles";
-import { findAll } from "../database/db";
+import { findAll, deleteAll } from "../database/db";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Postdetailscreen from "./PostdetailScreen";
 import { NavigationContainer } from "@react-navigation/native";
@@ -41,6 +41,15 @@ const ListpostsScreen = ({ navigation }) => {
       });
   });
 
+  const deleteAllListener = emitter.addListener("fubar", () => {
+    findAll()
+      .then((res) => setListDiaries(res))
+      .catch((err) => {
+        const errmsg = err;
+        console.log(errmsg);
+      });
+  })
+
   useEffect(() => {
     findAll()
       .then((res) => setListDiaries(res))
@@ -53,14 +62,26 @@ const ListpostsScreen = ({ navigation }) => {
       deleteListener.remove();}
   }, []);
 
+  const handleNukeDb = () => {
+    console.log('hello')
+    deleteAll()
+    .then(res => emitter.emit("fubar"))
+    .catch(err => console.log(err))
+
+  }
+
   const ListView = ({ navigation }) => {
     return (
       <View style={styles.container}>
+        <Pressable onPress={handleNukeDb} style={styles.listremoveall}>
+                <Text>Nuke DB</Text>
+        </Pressable>  
         <Listposts
           listDiaries={listDiaries}
           setListDiaries={setListDiaries}
           navigation={navigation}
-        />        
+        />
+              
       </View>
     );
   };

@@ -5,8 +5,7 @@ const CreatePostButton = ({title, icon, navigation}) => {
     return (
     <Pressable
         onPress={() => navigation.navigate('Create post')}
-        style={styles.createbutton}
-    >
+        style={styles.createbutton}>
         <Text style={styles.createbuttontext}>{title}</Text>
             {icon}                 
         </Pressable>

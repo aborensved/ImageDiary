@@ -1,19 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, Text, View } from 'react-native';
+import { NativeAppEventEmitter, Pressable, Text, View } from 'react-native';
 import styles from '../styles/styles';
 import { AntDesign } from '@expo/vector-icons'
 import CreatePostButton from '../components/Createpostbutton';
 import LatestPost from '../components/LatestPost';
 
-const HomeScreen = ({navigation}) => {
 
-    
+const HomeScreen = ({navigation}) => {     
 
     return (
         <View style={styles.container}>
-            <View style={styles.hometop}>
+            <Pressable style={styles.hometop}>
                 <Text style={styles.hometoptext}>Välkommen till Dagboken</Text>
-            </View>
+            </Pressable>
             <View style={styles.homelatestpost}>
                 <Text style={styles.homelatestposttext}>Senaste dagboksinlägget: </Text>
                 <LatestPost  style={styles.homelatestpost}/>

@@ -75,6 +75,18 @@ export const deleteByID = (id) => {
   })
 }
 
+export const deleteAll = (id) => {
+  return new Promise((resolve, reject) => {
+    db.transaction((transaction) => {
+        transaction.executeSql(
+            `DELETE FROM imgdiaries`, [],
+            (tx, res) => resolve(res),
+            (tx, err) => reject(err)
+        )
+    })
+  })
+}
+
 export const findLatestPost = () => {
   return new Promise((resolve, reject) => {
     db.transaction((transaction) => {

@@ -15,6 +15,7 @@ const Postdetailscreen = ({route, navigation}) => {
     const handleDelete = (id) => {
         deleteByID(id)
             .then(res => emitter.emit('delete', post))
+            .catch(err => console.log(err))
 
         navigation.goBack()
     }
