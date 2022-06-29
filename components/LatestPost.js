@@ -4,14 +4,13 @@ import { Text, View, Image, ScrollView, NativeEventEmitter, FlatList } from "rea
 import { findAll, findByID, findLatestPost } from "../database/db";
 import styles from '../styles/styles';
 import Images from '../assets/index';
-const LatestPost = () => {
+const LatestPost = ({navigation}) => {
     
-    const emitter = new NativeEventEmitter();
+    const emitter = new NativeEventEmitter();    
 
     const updateListener = emitter.addListener("knorr", () => {
         findLatestPost()
-        .then((res) => setAfter(res))
-        //.then(res => console.log(after))      
+        .then((res) => setAfter(res))     
         .catch((err) => {
             const errmsg = err;
             console.log(errmsg);
@@ -20,7 +19,7 @@ const LatestPost = () => {
     });
 
     const deleteListener = emitter.addListener("delete", () => {
-        findAll()
+        findLatestPost()
           .then((res) => setAfter(res))
           .catch((err) => {
             const errmsg = err;
@@ -29,7 +28,7 @@ const LatestPost = () => {
       });
     
     const deleteAllListener = emitter.addListener("fubar", () => {
-    findAll()
+    findLatestPost()
         .then((res) => setAfter(res))
         .catch((err) => {
         const errmsg = err;
@@ -41,8 +40,7 @@ const LatestPost = () => {
 
     const start = () => {
         findLatestPost()
-        .then((res) => setAfter(res))
-        //.then(res => console.log(after))      
+        .then((res) => setAfter(res))              
         .catch((err) => {
             const errmsg = err;
             console.log(errmsg);
@@ -58,10 +56,9 @@ const LatestPost = () => {
                 deleteAllListener.remove();
             }}, [])    
     
-    return after.map((imgdiary2, id) => {
-
+    return after.map((imgdiary, id) => {
         var imgsource = Images.placeholder        
-        switch (imgdiary2.imgdata) {
+        switch (imgdiary.imgdata) {
             case 'mood_happy': imgsource = Images.imagehappy
                 break;
             case 'mood_middle' : imgsource = Images.imagemiddle
@@ -77,10 +74,10 @@ const LatestPost = () => {
                 source={imgsource}
                 style={styles.homelatestimage}
                 />
-                <Text style={styles.homelatestposttitle}>"{imgdiary2.title}"</Text>
+                <Text style={styles.homelatestposttitle}>"{imgdiary.title}"</Text>
             </View>
         )
-    })
+        })
 }
 
 export default LatestPost;

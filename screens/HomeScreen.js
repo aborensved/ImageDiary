@@ -10,12 +10,12 @@ const HomeScreen = ({navigation}) => {
 
     return (
         <View style={styles.container}>
-            <Pressable style={styles.hometop}>
+            <View style={styles.hometop}>
                 <Text style={styles.hometoptext}>Välkommen till Dagboken</Text>
-            </Pressable>
+            </View>
             <View style={styles.homelatestpost}>
                 <Text style={styles.homelatestposttext}>Senaste dagboksinlägget: </Text>
-                <LatestPost  style={styles.homelatestpost}/>
+                <LatestPost navigation={navigation} style={styles.homelatestpost}/>
             </View>
             <View>
                 <CreatePostButton 

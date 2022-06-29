@@ -19,7 +19,7 @@ import {styles} from './styles/styles'
 export default function App() {
 
   const Tabs = createBottomTabNavigator();
-  const RootStack = createNativeStackNavigator();
+  //const RootStack = createNativeStackNavigator();
 
   useEffect(() => {
     initDB()
@@ -36,8 +36,7 @@ export default function App() {
       <Tabs.Navigator
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: '#bbddbb',
-          
+          backgroundColor: '#bbddbb',          
         },
       }}>
         <Tabs.Group>
