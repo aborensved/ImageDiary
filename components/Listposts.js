@@ -1,4 +1,4 @@
-import {View, Text, FlatList, SafeAreaView, Pressable, Image} from 'react-native';
+import {View, Text, ScrollView, FlatList, Pressable, Image} from 'react-native';
 import styles from '../styles/styles';
 import Images from '../assets';
 
@@ -9,7 +9,6 @@ const Listposts = ({listDiaries, navigation}) => {
         navigation.navigate('PostdetailScreen', {post: post})
     }
 
-
     const renderPosts = ({ item: post }) => {
         var imgsource = Images.placeholder        
         switch (post.imgdata) {
@@ -19,11 +18,11 @@ const Listposts = ({listDiaries, navigation}) => {
                 break;
             case 'mood_sad' : imgsource = Images.imagesad
                 break;
-            default: console.log('No image data was found')
+            default: console.log('ListPosts: No image reference was found')
         }            
         
         return (
-            <View style={styles.listpostitem}>                
+            <ScrollView style={styles.listpostitem}>                
                 <Pressable 
                     onPress={() => handlePress(post)} 
                     post={post} 
@@ -40,7 +39,7 @@ const Listposts = ({listDiaries, navigation}) => {
                         </Text>
                     </View>                    
                 </Pressable>                
-            </View>
+            </ScrollView>
         )        
     }
 

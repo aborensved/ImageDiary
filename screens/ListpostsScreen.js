@@ -73,16 +73,15 @@ const ListpostsScreen = ({ navigation }) => {
 
   const ListView = ({ navigation }) => {
     return (
-      <View style={styles.container}>
+      <View style={styles.containertabs}>
         <Pressable onPress={handleNukeDb} style={styles.listremoveall}>
                 <Text style={{color: "white", alignSelf: "center"}}>Nuke DB - Developer only</Text>
         </Pressable>  
-        <Listposts
+        <Listposts          
           listDiaries={listDiaries}
           setListDiaries={setListDiaries}
           navigation={navigation}
-        />
-              
+        />              
       </View>
     );
   };

@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { View, TextInput, Pressable, Text, NativeEventEmitter, FlatList, ImageBackground } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, ScrollView, TextInput, Pressable, Text, NativeEventEmitter, FlatList, ImageBackground } from "react-native";
 import { insert, findAll } from '../database/db'
 import ImgDiary from "../models/ImgDiary";
 import styles from "../styles/styles";
 
 
-
+// TODO: Skriva om mood utan Flatlist, då det ställer till det med felmeddelande. 
+// Tog bort autofocus på entry text, då det inte gjorde vad vi trodde ;)
+// Good luck!
 
 
 const DiaryInput = ({ navigation}) => {
@@ -31,8 +32,7 @@ const DiaryInput = ({ navigation}) => {
 
     const renderMood = ({item}) => {
         
-        const backgroundColor = item.id === selectedId ? "#117711":"#11771155";
-        
+        const backgroundColor = item.id === selectedId ? "#117711":"#11771155";        
         
         return (
             <Pressable 
@@ -76,7 +76,7 @@ const DiaryInput = ({ navigation}) => {
                 const errmsg = err
                 console.log(errmsg)
             })
-        navigation.navigate('List posts')
+        navigation.navigate('List Entries')
          
     }
 
@@ -93,6 +93,7 @@ const DiaryInput = ({ navigation}) => {
             </View>
             <View>
                 <TextInput
+                placeholder="Title.."
                 maxLength={20}
                 style={styles.createinputtitle} 
                 onChangeText={handleTitleChange}
@@ -101,7 +102,7 @@ const DiaryInput = ({ navigation}) => {
             </View>
             <View>
                 <TextInput 
-                autoFocus
+                placeholder="Entry text..."
                 multiline
                 numberOfLines={12}
                 style={styles.createinputbody}
@@ -114,7 +115,7 @@ const DiaryInput = ({ navigation}) => {
             onPress={handleAddPost}
             navigation={navigation}
             >
-                <Text style={styles.createbuttontext}>Add post</Text>
+                <Text style={styles.createbuttontext}>Add Entry</Text>
             </Pressable>
         </View>
         

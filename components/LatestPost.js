@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
-import { Text, View, Image, ScrollView, NativeEventEmitter, FlatList } from "react-native";
-import { findAll, findByID, findLatestPost } from "../database/db";
+import { Text, View, Image, NativeEventEmitter } from "react-native";
+import { findLatestPost } from "../database/db";
 import styles from '../styles/styles';
 import Images from '../assets/index';
 const LatestPost = ({navigation}) => {
@@ -65,7 +65,7 @@ const LatestPost = ({navigation}) => {
                 break;
             case 'mood_sad' : imgsource = Images.imagesad
                 break;
-            default: console.log('No image data was found')
+            default: console.log('LatestPost: No image reference was found')
         } 
 
         return (

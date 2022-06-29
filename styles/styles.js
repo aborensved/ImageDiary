@@ -3,9 +3,15 @@ import { StyleSheet, Dimensions } from "react-native";
 export default styles = StyleSheet.create({
     container: {
       flex: 1,      
-      backgroundColor: '#aba',    
-      
+      backgroundColor: '#9b9',
+      paddingTop: 20
     },
+    containertabs: {
+        flex: 1,      
+        backgroundColor: '#9b9',
+        paddingBottom: 30,
+        paddingTop: 20
+      },
 
     // Home Styling
     hometop: {
@@ -55,7 +61,7 @@ export default styles = StyleSheet.create({
     },
 
 
-    // List posts Styling
+    // List Entries Styling
     listpostitem: {
         flexDirection: 'row',
         padding: 15,     
@@ -92,14 +98,15 @@ export default styles = StyleSheet.create({
     },
     listremoveall: {
         width: (Dimensions.get('screen').width),
-        backgroundColor: 'red'
+        backgroundColor: 'red',
+        marginTop: 10
     },    
     
 
 
-    // Create post Styling    
+    // Create Entry Styling    
     createmoodcontainer: {
-        marginVertical: 20,
+        marginBottom: 30,
         backgroundColor: "#11771133",
         width: (Dimensions.get('screen').width * 0.80),
         height: (Dimensions.get('screen').height * 0.28),
@@ -155,10 +162,14 @@ export default styles = StyleSheet.create({
         width: (Dimensions.get('screen').width * 0.50),
         height: 50,
         alignSelf: 'center',
-        marginBottom: 25
+        marginBottom: 25,
+        flexDirection: 'row',
+        
     },
     createbuttontext: {
-        color: 'white'
+        color: 'white',
+        fontSize: 20,
+        marginRight: 5
     },
 
     // PostdetailScreen styling    
