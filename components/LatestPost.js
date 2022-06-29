@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Text, View, Image, ScrollView, NativeEventEmitter, FlatList } from "react-native";
 import { findAll, findByID, findLatestPost } from "../database/db";
 import styles from '../styles/styles';
-
+import Images from '../assets/index';
 const LatestPost = () => {
     
     const emitter = new NativeEventEmitter();
@@ -11,20 +11,38 @@ const LatestPost = () => {
     const updateListener = emitter.addListener("knorr", () => {
         findLatestPost()
         .then((res) => setAfter(res))
-        .then(res => console.log(after))      
+        //.then(res => console.log(after))      
         .catch((err) => {
             const errmsg = err;
             console.log(errmsg);
         });
-        return console.log('Hello UPDATE')
+        
     });
+
+    const deleteListener = emitter.addListener("delete", () => {
+        findAll()
+          .then((res) => setAfter(res))
+          .catch((err) => {
+            const errmsg = err;
+            console.log(errmsg);
+          });
+      });
+    
+    const deleteAllListener = emitter.addListener("fubar", () => {
+    findAll()
+        .then((res) => setAfter(res))
+        .catch((err) => {
+        const errmsg = err;
+        console.log(errmsg);
+        });
+    })
 
     const [after, setAfter] = useState([]);
 
     const start = () => {
         findLatestPost()
         .then((res) => setAfter(res))
-        .then(res => console.log(after))      
+        //.then(res => console.log(after))      
         .catch((err) => {
             const errmsg = err;
             console.log(errmsg);
@@ -32,23 +50,37 @@ const LatestPost = () => {
         return console.log('Hello START')
     }
 
-    useEffect(() => {start();
-    return () => updateListener.remove()}, [])    
+    useEffect(() => {
+        start();
+            return () => {
+                updateListener.remove();
+                deleteListener.remove();
+                deleteAllListener.remove();
+            }}, [])    
     
     return after.map((imgdiary2, id) => {
+
+        var imgsource = Images.placeholder        
+        switch (imgdiary2.imgdata) {
+            case 'mood_happy': imgsource = Images.imagehappy
+                break;
+            case 'mood_middle' : imgsource = Images.imagemiddle
+                break;
+            case 'mood_sad' : imgsource = Images.imagesad
+                break;
+            default: console.log('No image data was found')
+        } 
+
         return (
             <View key={id}>
                 <Image                 
-                source={require('../assets/placeholder_img.jpg')}
+                source={imgsource}
                 style={styles.homelatestimage}
                 />
                 <Text style={styles.homelatestposttitle}>"{imgdiary2.title}"</Text>
             </View>
         )
-    })       
-    
-        
-    
+    })
 }
 
 export default LatestPost;

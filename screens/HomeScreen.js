@@ -20,7 +20,7 @@ const HomeScreen = ({navigation}) => {
             <View>
                 <CreatePostButton 
                     title={'Add new post'}
-                    icon={<AntDesign name="plus" size={24} color="black" />}
+                    icon={<AntDesign name="plus" size={24} color="white" />}
                     navigation={navigation}                    
                     />
             </View>            

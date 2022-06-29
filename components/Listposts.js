@@ -9,8 +9,6 @@ const Listposts = ({listDiaries, navigation}) => {
         navigation.navigate('PostdetailScreen', {post: post})
     }
 
-    // text cutoff
-    // bild på en plats, text anpassar sig efter sidan.
 
     const renderPosts = ({ item: post }) => {
         var imgsource = Images.placeholder        

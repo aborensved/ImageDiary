@@ -59,11 +59,12 @@ const ListpostsScreen = ({ navigation }) => {
       });
     return () => {
       updateListener.remove();
-      deleteListener.remove();}
+      deleteListener.remove();
+    deleteAllListener.remove();}
   }, []);
 
   const handleNukeDb = () => {
-    console.log('hello')
+    console.log('Deleteing all records in database - Developer Only')
     deleteAll()
     .then(res => emitter.emit("fubar"))
     .catch(err => console.log(err))
@@ -74,7 +75,7 @@ const ListpostsScreen = ({ navigation }) => {
     return (
       <View style={styles.container}>
         <Pressable onPress={handleNukeDb} style={styles.listremoveall}>
-                <Text>Nuke DB</Text>
+                <Text style={{color: "white", alignSelf: "center"}}>Nuke DB - Developer only</Text>
         </Pressable>  
         <Listposts
           listDiaries={listDiaries}
