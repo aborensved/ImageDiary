@@ -106,33 +106,37 @@ export default styles = StyleSheet.create({
 
     // Create Entry Styling    
     createmoodcontainer: {
-        marginBottom: 30,
+        marginBottom:5,
         backgroundColor: "#11771133",
         width: (Dimensions.get('screen').width * 0.80),
-        height: (Dimensions.get('screen').height * 0.28),
+        height: (Dimensions.get('screen').height * 0.20),
         alignSelf: 'center',
         borderRadius: 15,
-        padding: 10
+        padding: 10,        
     },
     createmoodcontaintertext: {
         color: 'white',
         alignSelf: 'center',
-        fontSize: 15,
+        fontSize: 16,
+        
     },
     createmooditem: {
         backgroundColor: '#11771177',
-        width: (Dimensions.get('screen').width * 0.50),
+        width: (Dimensions.get('screen').width * 0.40),
         alignSelf: "center",
-        padding: 15,
+        padding: 5,
         borderRadius: 25,
-        marginVertical: 3
+        marginVertical: 3,
+        
     },
     createmoodtext: {
-        color: 'white',
+        color: '#fdffc2',
         fontSize: 18,
-        alignSelf: "center"
+        alignSelf: "center",
+        
     },
     createinputtitle: {
+        marginTop: 25,
         backgroundColor: "white",
         borderRadius: 15,
         width: (Dimensions.get('screen').width * 0.80),
@@ -150,7 +154,7 @@ export default styles = StyleSheet.create({
         borderRadius: 15,
         width: (Dimensions.get('screen').width * 0.80),
         height: (Dimensions.get('screen').height * 0.30),
-        marginBottom: 15,
+        marginBottom: (Dimensions.get('screen').height * 0.10),
         fontSize: 16,
         alignSelf: 'center' 
     },

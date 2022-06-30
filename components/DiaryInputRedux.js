@@ -10,7 +10,7 @@ import styles from "../styles/styles";
 // Good luck!
 
 
-const DiaryInput = ({ navigation}) => {
+const DiaryInputRedux = ({ navigation}) => {
 
     const DATA2 = [
         {
@@ -35,7 +35,7 @@ const DiaryInput = ({ navigation}) => {
         const backgroundColor = item.id === selectedId ? "#117711":"#11771155";        
         
         return (
-            <View>
+            <View >
                 <Pressable 
                 item={item}
                 onPress={() => {
@@ -46,7 +46,7 @@ const DiaryInput = ({ navigation}) => {
                 backgroundColor={backgroundColor}
                 >             
                 <Text 
-                style={styles.createmoodtext} 
+                style={styles.createmoodtext}                
                 >"{item.title}"</Text>                
             </Pressable>
             </View>
@@ -91,11 +91,10 @@ const DiaryInput = ({ navigation}) => {
     
 
     return (
-        <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset = {50}
-        style={styles.container}>
-            <View style={styles.createmoodcontainer}>
+        <View style={styles.container}>
+            <View
+            nativeID="moodbox"
+            style={styles.createmoodcontainer}>
                 <Text style={styles.createmoodcontaintertext}>Choose a mood:</Text>
                 <FlatList
                 data={DATA2}
@@ -104,6 +103,7 @@ const DiaryInput = ({ navigation}) => {
                 extraData={selectedId}
                 />                 
             </View>
+            <ScrollView>
             <View>
                 <TextInput
                 placeholder="Title.."
@@ -113,8 +113,9 @@ const DiaryInput = ({ navigation}) => {
                 value={titleInput}
                 />
             </View>
-            <View
-                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}                
+                >
                 <TextInput 
                 placeholder="Entry text..."
                 multiline
@@ -123,7 +124,7 @@ const DiaryInput = ({ navigation}) => {
                 onChangeText={handleBodyChange}
                 value={bodyInput}
                 />
-            </View>
+            </KeyboardAvoidingView>
             <Pressable
             style={styles.createbutton}
             onPress={handleAddPost}
@@ -131,10 +132,11 @@ const DiaryInput = ({ navigation}) => {
             >
                 <Text style={styles.createbuttontext}>Add Entry</Text>
             </Pressable>
-        </KeyboardAvoidingView>
+            </ScrollView>
+        </View>
         
     )
 
 }
 
-export default DiaryInput;
+export default DiaryInputRedux;

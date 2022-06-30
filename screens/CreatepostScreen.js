@@ -1,5 +1,6 @@
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import DiaryInput from '../components/DiaryInput';
+import DiaryInputRedux from '../components/DiaryInputRedux';
 import styles from '../styles/styles';
 
 
@@ -7,11 +8,13 @@ import styles from '../styles/styles';
 const CreatepostScreen = ({navigation}) => {
 
     return (
-        <View style={styles.container}>            
-            <DiaryInput             
+        <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.container}>            
+            <DiaryInputRedux             
             navigation={navigation}
             />            
-        </View>
+        </KeyboardAvoidingView>
     )
     
 }
