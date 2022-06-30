@@ -5,10 +5,6 @@ import ImgDiary from "../models/ImgDiary";
 import styles from "../styles/styles";
 
 
-// TODO: Skriva om mood utan Flatlist, då det ställer till det med felmeddelande. 
-// Tog bort autofocus på entry text, då det inte gjorde vad vi trodde ;)
-// Good luck!
-
 
 const DiaryInput = ({ navigation}) => {
 
@@ -84,9 +80,6 @@ const DiaryInput = ({ navigation}) => {
         navigation.navigate('List Entries')
          
     }
-
-    // Skriv en funktion med knappar som är hårdkodade för beteende. Kör med ScrollView sen. 
-    // Fuck React Native
 
     
 

@@ -1,20 +1,13 @@
-import { StatusBar } from "expo-status-bar";
+
 import { useEffect, useState } from "react";
-import { Text, View, ScrollView, NativeEventEmitter, Pressable } from "react-native";
+import { Text, View, NativeEventEmitter, Pressable } from "react-native";
 import Listposts from "../components/Listposts";
 import styles from "../styles/styles";
 import { findAll, deleteAll } from "../database/db";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Postdetailscreen from "./PostdetailScreen";
-import { NavigationContainer } from "@react-navigation/native";
-import LatestPost from "../components/LatestPost";
 
-// Kolla upp fetch för denna listan!
-// ref: onsdagens lektion
-// Fetch avser HTTP anrop, vilket vi inte ska använda, då vi har en lokal databas.
 
-// Vi ska få in en en useState in hit som vi skickar in i ListPosts
-// Vi gör en hämtnign från DB som skickar dem vidare från skärmen och listar dem.
 
 const ListpostsScreen = ({ navigation }) => {
   const RootStack = createNativeStackNavigator();
