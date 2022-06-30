@@ -46,6 +46,7 @@ const Listposts = ({listDiaries, navigation}) => {
     return (
         <View>
             <FlatList 
+            inverted
             data={listDiaries}
             renderItem={renderPosts}
             keyExtractor={(post, index) => index}            
